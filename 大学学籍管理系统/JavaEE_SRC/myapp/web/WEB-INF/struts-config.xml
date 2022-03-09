@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+   <struts-config>
+	 <form-beans>
+	   <form-bean name="userForm" type="com.ustc.action.student.UserForm"/>
+	   <form-bean name="loginForm" type="com.ustc.action.frame.LoginForm"/>
+	   <form-bean name="studentForm" type="com.ustc.action.student.StudentForm"/>
+	   <form-bean name="GradeForm" type="com.ustc.action.grade.GradeForm"/>
+    </form-beans>
+    
+	 <global-forwards>
+	   <forward name="error" path="/error.jsp"/>
+	 </global-forwards>
+	 <action-mappings>
+	 
+	 <!--structs mapping test part-->
+	 <action path="/createUser" type="com.ustc.action.student.UserAction">
+	     <forward name="success" path="/ustc/jsp/student/createuser.jsp"/> 
+         <forward name="teststudent" path="/ustc/jsp/student/teststudent.jsp"/> 
+	</action>
+	
+	<!--login part-->
+	<action path="/login" type="com.ustc.action.frame.LoginAction" name="loginForm" scope="request" validate="true" input="/ustc/jsp/frame/index.jsp" >
+	    <forward name="success" path="/ustc/jsp/frame/index.jsp"/> 
+	    <forward name="login" path="/ustc/jsp/frame/index.jsp"/> 
+	</action>
+	
+	<action path="/logout" type="com.ustc.action.frame.LogoutAction" />
+	
+	<!--Add student part-->
+	<action path="/addStudent" type="com.ustc.action.student.AddStudentAction" name="studentForm" scope="request" validate="true" input="/ustc/jsp/student/createstudent.jsp" >
+         <forward name="addstudent" path="/ustc/jsp/student/createstudent.jsp"/> 
+	</action>
+	
+	<!--Edit student part-->
+	<action path="/editStudent" type="com.ustc.action.student.EditStudentAction" name="studentForm" scope="request" validate="true" input="/ustc/jsp/student/editstudent.jsp" >
+         <forward name="editstudent" path="/ustc/jsp/student/editstudent.jsp"/> 
+	</action>
+	
+	
+	<!--Delete student part-->
+	<action path="/deleteStudent" type="com.ustc.action.student.DeleteStudentAction" name="studentForm" scope="request" validate="true" input="/ustc/jsp/student/studentlist.jsp" >
+         <forward name="list" path="/studentAdmin.do"/> 
+	</action>
+	
+	<action path="/studentAdmin" type="com.ustc.action.student.StudentAdminAction" name="studentForm" scope="request" validate="true" input="/ustc/jsp/student/studentadmin.jsp" >
+         <forward name="list" path="/ustc/jsp/student/studentadmin.jsp"/> 
+	</action>	
+	
+	<action path="/studentList" type="com.ustc.action.student.StudentListAction" name="studentForm" scope="request" validate="true" input="/ustc/jsp/student/studentadmin.jsp" >
+         <forward name="list" path="/ustc/jsp/student/studentlist.jsp"/> 
+	</action>	
+	
+	
+	<!--Search student  part-->
+	<action path="/studentSearch" type="com.ustc.action.student.StudentSearchAction" name="studentForm" scope="request" validate="true" input="/ustc/jsp/student/studentquery.jsp" >
+         <forward name="list" path="/ustc/jsp/student/studentquery.jsp"/> 
+	</action>	
+	
+	<!--Add grade  part-->
+	<action path="/addGrade" type="com.ustc.action.grade.AddGradeAction" name="GradeForm" scope="request" validate="true" input="/ustc/jsp/grade/creategrade.jsp" >
+         <forward name="addgrade" path="/ustc/jsp/grade/creategrade.jsp"/> 
+          <forward name="gradeadmin" path="/gradeAdmin.do" /> 
+	</action>
+	
+	<!--grade admin  part-->
+	<action path="/gradeAdmin" type="com.ustc.action.grade.GradeAdminAction" name="GradeForm" scope="request" validate="true" input="/ustc/jsp/grade/gradeadmin.jsp" >
+         <forward name="list" path="/ustc/jsp/grade/gradeadmin.jsp"/> 
+	</action>
+	
+	<!--Delete grade  part-->
+	<action path="/deleteGrade" type="com.ustc.action.grade.DeleteGradeAction" name="GradeForm" scope="request" validate="true" input="/ustc/jsp/grade/gradelist.jsp" >
+         <forward name="list" path="/gradeAdmin.do"/> 
+	</action>
+	
+	<action path="/gradeList" type="com.ustc.action.grade.GradeListAction" name="GradeForm" scope="request" validate="true" input="/ustc/jsp/grade/gradelist.jsp" >
+         <forward name="list" path="/ustc/jsp/grade/gradelist.jsp"/> 
+	</action>	
+	
+	<!--Search grade  part-->
+	<action path="/gradeSearch" type="com.ustc.action.grade.GradeSearchAction" name="GradeForm" scope="request" validate="true" input="/ustc/jsp/grade/gradequery.jsp" >
+         <forward name="list" path="/ustc/jsp/grade/gradequery.jsp"/> 
+	</action>
+	
+   </action-mappings>
+  </struts-config>

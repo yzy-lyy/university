@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+   <struts-config>
+	 <form-beans>
+	   <form-bean name="loginForm" type="com.ustc.frame.LoginForm"/>
+    </form-beans>
+	 <global-forwards>
+	   <forward name="error" path="/error.jsp"/>
+	 </global-forwards>
+	 <action-mappings>
+	  <action path="/createUsered" type="com.ustc.student.UserAction">
+	   <forward name="success" path="/web/ustc/jsp/student/createUser.jsp"/> 
+       <forward name="teststudent" path="/web/ustc/jsp/student/teststudent.jsp"/> 
+	  </action>
+	  <action path="/login" type=com.ustc.frame.LoginAction">
+	   <forward name="loginsuccess" path="/web/ustc/jsp/frame/index.jsp"/> 
+       <forward name="loginfail" path="/web/ustc/jsp/frame/index.jsp"/> 
+	  </action>
+   </action-mappings>
+  </struts-config>
